@@ -78,9 +78,36 @@ public class InsertDemo {
         }
 
         int[][] ints1 = ints.toArray (new int[0][0]);
-        Arrays.sort (ints1, (v1, v2) -> v1[0] - v2[0]);
         return ints1;
     }
+
+    public int[][] insert2(int[][] intervals, int[] newInterval){
+        if (newInterval == null || intervals == null) {
+            return intervals;
+        }
+
+        List<int[]> results = new ArrayList<int[]>();
+        int insertPos = 0;//插入位置
+
+        for (int[] interval : intervals) {//遍历intervals
+            if (interval[1] < newInterval[0]) {//如果当前区间的end小于新区间的start，说明无重叠，直接添加
+                results.add(new int[]{interval[0], interval[1]});
+                insertPos++;//插入位置+1
+            } else if (interval[0] > newInterval[1]) {//如果当前区间的start小于新区间的end，说明无重叠，直接添加
+                results.add(new int[]{interval[0], interval[1]});
+            } else {//否则一定有重叠，取两个区间的最小start，和最大end, 作为新区间
+                newInterval[0] = Math.min(interval[0], newInterval[0]);
+                newInterval[1] = Math.max(interval[1], newInterval[1]);
+            }
+        }
+
+        results.add(insertPos, new int[]{newInterval[0], newInterval[1]});
+
+        return results.toArray(new int[results.size()][2]);
+    }
+
+
+
 
     public static void main(String[] args) {
 
