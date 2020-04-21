@@ -143,7 +143,7 @@ public class GracefulSon {
 
 
     public static void main(String[] args) {
-        int[] nums = {1, 1, 1,2, 1, 1};
+        int[] nums = {1, 1, 1, 1, 1};
         int[] numse = {2,3, 4, 6};
         int[] aa = { 2, 2, 2, 1, 2, 2, 1, 2, 2, 2,1};
         int []bb={91473,45388,24720,35841,29648,77363,86290,58032,53752,87188,34428,85343,19801,73201};
